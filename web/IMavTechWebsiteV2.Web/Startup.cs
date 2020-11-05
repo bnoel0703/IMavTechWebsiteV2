@@ -28,13 +28,11 @@ namespace IMavTechWebsiteV2.Web
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            var options = new DefaultFilesOptions();
+            options.DefaultFileNames.Add("index.html");
+
+            app.UseDefaultFiles(options);
+            app.UseStaticFiles();
         }
     }
 }
